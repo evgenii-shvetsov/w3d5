@@ -54,8 +54,16 @@ class PolyTreeNode
         nil
     end
 
+    def bfs(target)
+        queue = [self]
+        until queue.empty?
+          first = queue.shift  
+          return first if first.value == target
+            queue.push(*first.children)
+        end
+        nil
 
-
+    end
 
     # def inspect
     #     # children -> children values
@@ -64,5 +72,4 @@ class PolyTreeNode
 
     # private
 
-    
 end

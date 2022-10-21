@@ -23,6 +23,27 @@ class PolyTreeNode
         # nil
     end
 
+    def add_child(child_node)
+        # @parent.children= child_node
+        child_node.parent= self
+        if !self.children.include?(child_node)
+            self.children << child_node
+        end
+    end
+
+    def remove_child(child_node)
+        if !self.children.include?(child_node)
+            raise "node is not a child"
+        end
+
+        self.children.select! {|el| el != child_node}
+        child_node.parent = nil
+        
+    end
+
+
+
+
     # def inspect
     #     # children -> children values
     #     { "children" => @children, "parent" => @parent, "value" => @value }.inspect
